@@ -16,7 +16,7 @@
   <ion-list>
     <ion-item *ngFor="let event of eventList"
     (click)="goToDetail(event.id)">
-      <h3>{{event?.name}}</h3>
+      <h2>{{event?.name}}</h2>
       <p>Rp.{{event?.price}}</p>
     </ion-item>
   </ion-list>

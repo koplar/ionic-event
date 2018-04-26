@@ -13,11 +13,47 @@
       {{currentEvent?.name}}
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-content (click)="updateEvent()">
       <p>Harga Tiket : <strong>Rp {{currentEvent?.price}}</strong></p>
       <p>Tanggal : <strong>{{currentEvent?.date}}</strong></p>
       <p>Kontak : <strong>{{currentEvent?.contact}}</strong></p>
       <p>Keterangan : <br>{{currentEvent?.des}}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Menambah peserta baru-->
+  <ion-card class="add-guest-form">
+    <ion-card-header>
+      Tambah Peserta
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-9>
+          <ion-item>
+            <ion-label floating>Nama</ion-label>
+            <ion-input [(ngModel)]="guestName" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-3>
+          <button ion-button icon-only (click)="takePicture()">
+            <ion-icon name="camera"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <span *ngIf="guestPicture">
+          Picture Captured!
+        </span>
+      </ion-row>
+
+      <ion-row>
+          <button ion-button block color="primary"
+            (click) = "addGuest(guestName)" [disabled]="!guestName">
+            Simpan Data Peserta
+          </button>
+      </ion-row>
     </ion-card-content>
   </ion-card>
 </ion-content>
